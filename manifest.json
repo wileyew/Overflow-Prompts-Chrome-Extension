@@ -1,26 +1,26 @@
 {
-    "name": "Overflow Prompts",
-    "version": "1.0.0",
-    "description": "My extension doesn't do anything yet!",
-    "manifest_version": 2,
+    "manifest_version": 3,
+    "name": "Report Issues - Hallucinations, Copyright, Security",
+    "version": "1.0",
+    "description": "Allows users to report hallucination, copyright, and security issues by highlighting text.",
+    "permissions": ["activeTab", "contextMenus", "storage", "scripting"],
     "background": {
-    "persistent": false,
-    "scripts": ["js/clear_history.js"]
-},
-    "permissions": [
-    "history"
-],
-    "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-        "16": "images/get_started16.png",
-        "48": "images/get_started48.png",
-        "128": "images/get_started128.png"
-    }
-},
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/OverflowPrompt16.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
     "icons": {
-    "16": "images/get_started16.png",
-    "48": "images/get_started48.png",
-    "128": "images/get_started128.png"
-}
-}
+      "16": "icons/OverflowPrompt16.png"
+    }
+  }
+  
